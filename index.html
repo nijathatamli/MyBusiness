@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MyBusiness — Enterprise AI Platform</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     LEFT PANEL — Branding & Social proof
+     ══════════════════════════════════════ -->
+<div class="left-panel">
+
+  <div class="logo">
+    <div class="logo-mark">
+      <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+    </div>
+    MyBusiness
+  </div>
+
+  <div class="left-body">
+    <div class="left-eyebrow">Enterprise AI Platform</div>
+    <h1>Built for companies<br>that move<br><em>at scale</em></h1>
+    <p>Deploy intelligent AI workflows, automate complex decisions, and unify your team — all from one secure workspace.</p>
+
+    <ul class="feature-list">
+      <li>
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="feat-text">
+          <strong>Enterprise Security</strong>
+          SOC 2 Type II, SSO, RBAC and MFA enforced by default
+        </div>
+      </li>
+      <li>
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="feat-text">
+          <strong>Team Collaboration</strong>
+          Share AI pipelines, prompts, and agents across departments
+        </div>
+      </li>
+      <li>
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <div class="feat-text">
+          <strong>Usage Analytics</strong>
+          Track AI consumption and costs by team and business unit
+        </div>
+      </li>
+      <li>
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div class="feat-text">
+          <strong>100+ Integrations</strong>
+          REST API, webhooks, Slack, Salesforce and more
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="left-footer">
+    <div class="cert-badges">
+      <span class="cert-badge">SOC 2</span>
+      <span class="cert-badge">ISO 27001</span>
+      <span class="cert-badge">GDPR</span>
+      <span class="cert-badge">HIPAA Ready</span>
+    </div>
+    <div class="social-proof">
+      <div class="avatars">
+        <div class="av" style="background:#1A56DB;">AK</div>
+        <div class="av" style="background:#0E7490;">JM</div>
+        <div class="av" style="background:#7C3AED;">SR</div>
+        <div class="av" style="background:#B45309;">LT</div>
+        <div class="av" style="background:#374151;font-size:9px;">+</div>
+      </div>
+      <span>Trusted by 2,400+ teams in 45 countries</span>
+    </div>
+  </div>
+
+</div><!-- /left-panel -->
+
+
+<!-- ══════════════════════════════════════
+     RIGHT PANEL — Auth forms
+     ══════════════════════════════════════ -->
+<div class="right-panel">
+  <div class="form-wrapper">
+
+    <!-- Sign In / Create Account tab switcher -->
+    <div class="mode-tabs">
+      <button class="mode-tab" id="tabLogin"  onclick="NB.switchMode('login')">Sign In</button>
+      <button class="mode-tab active" id="tabSignup" onclick="NB.switchMode('signup')">Create Account</button>
+    </div>
+
+
+    <!-- ════════════════════════
+         SIGNUP FLOW
+         ════════════════════════ -->
+    <div id="signupFlow">
+
+      <!-- Step progress bar -->
+      <div class="prog-bar">
+        <div class="prog-step active" id="pi1"><div class="prog-num">1</div><span>Identity</span></div>
+        <div class="prog-line" id="pl1"></div>
+        <div class="prog-step" id="pi2"><div class="prog-num">2</div><span>Startup</span></div>
+        <div class="prog-line" id="pl2"></div>
+        <div class="prog-step" id="pi3"><div class="prog-num">3</div><span>Security</span></div>
+        <div class="prog-line" id="pl3"></div>
+        <div class="prog-step" id="pi4"><div class="prog-num">4</div><span>Verify</span></div>
+      </div>
+
+
+      <!-- ── STEP 1: Identity ── -->
+      <div class="fstep on" id="step1">
+        <div class="panel">
+          <div class="panel-header">
+            <div class="step-tag">Step 1 of 4</div>
+            <h2>Your identity</h2>
+            <p>Personal details for your account profile.</p>
+          </div>
+
+          <div class="frow c2">
+            <div class="field">
+              <label>First Name <span style="color:var(--error)">*</span></label>
+              <div class="ishell">
+                <span class="picon">
+                  <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </span>
+                <input type="text" id="firstName" placeholder="Alex" />
+              </div>
+            </div>
+            <div class="field">
+              <label>Last Name <span style="color:var(--error)">*</span></label>
+              <div class="ishell">
+                <span class="picon">
+                  <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </span>
+                <input type="text" id="lastName" placeholder="Morgan" />
+              </div>
+            </div>
+          </div>
+
+          <div class="frow c1">
+            <div class="field">
+              <label>Work Email <span style="color:var(--error)">*</span></label>
+              <div class="ishell">
+                <span class="picon">
+                  <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </span>
+                <input type="email" id="email" placeholder="alex@company.com" />
+              </div>
+              <span class="hint">Use your company email to unlock team features.</span>
+            </div>
+            <div class="field">
+              <label>Mobile Number <span style="color:var(--error)">*</span></label>
+              <div class="ishell">
+                <span class="picon">
+                  <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                </span>
+                <input type="tel" id="mobile" placeholder="+1 (555) 000-0000" />
+              </div>
+              <span class="hint">Required for SMS-based multi-factor authentication.</span>
+            </div>
+          </div>
+        </div>
+
+        <button class="btnp" onclick="NB.goStep(2)">
+          Continue
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+        <div class="ftxt">Already have an account? <a href="#" onclick="NB.switchMode('login');return false;">Sign in</a></div>
+      </div><!-- /step1 -->
+
+
+      <!-- ── STEP 2: Startup & Team ── -->
+      <div class="fstep" id="step2">
+        <div class="panel">
+          <div class="panel-header">
+            <div class="step-tag">Step 2 of 4</div>
+            <h2>Your startup &amp; team</h2>
+            <p>Tell us your role, idea, and who is building with you.</p>
+          </div>
+
+          <!-- Role selector -->
+          <div class="sec-label">Your Role in the Organization</div>
+          <div class="role-row" id="roleGrid">
+            <div class="role-card sel" onclick="NB.pickRole(this,'manager')">
+              <div class="riw" style="background:#EEF2FF;">
+                <svg viewBox="0 0 24 24" stroke="#4F46E5">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+              </div>
+              <div class="rname">Manager</div>
+              <div class="rdesc">Oversee teams, approve workflows, access billing and reporting</div>
+            </div>
+            <div class="role-card" onclick="NB.pickRole(this,'member')">
+              <div class="riw" style="background:#F0FDF4;">
+                <svg viewBox="0 0 24 24" stroke="#059669">
+                  <circle cx="12" cy="12" r="10"/>
+                  <line x1="12" y1="8" x2="12" y2="12"/>
+                  <line x1="12" y1="16" x2="12.01" y2="16"/>
+                </svg>
+              </div>
+              <div class="rname">Member</div>
+              <div class="rdesc">Use AI tools, collaborate, contribute to shared workspaces</div>
+            </div>
+          </div>
+
+          <!-- Admin info banner -->
+          <div class="infobanner">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <span>
+              <strong>Admin accounts</strong> are provisioned through your company directory via SCIM or LDAP.
+              Contact your IT administrator to set up SSO directory sync.
+            </span>
+          </div>
+
+          <!-- Job title & company -->
+          <div class="sec-label">Job Title &amp; Company</div>
+          <div class="frow c2" style="margin-bottom:20px;">
+            <div class="field">
+              <label>Job Title <span style="color:var(--error)">*</span></label>
+              <div class="ishell">
+                <span class="picon">
+                  <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+                </span>
+                <select id="jobTitle">
+                  <option value="">Select title...</option>
+                  <optgroup label="Leadership">
+                    <option>CEO / Co-Founder</option>
+                    <option>CTO / Technical Lead</option>
+                    <option>COO</option>
+                    <option>VP of Product</option>
+                    <option>VP of Engineering</option>
+                    <option>Director</option>
+                  </optgroup>
+                  <optgroup label="Engineering">
+                    <option>Software Engineer</option>
+                    <option>Senior Engineer</option>
+                    <option>Data Scientist</option>
+                    <option>ML Engineer</option>
+                    <option>DevOps / SRE</option>
+                    <option>Product Designer</option>
+                    <option>QA Engineer</option>
+                  </optgroup>
+                  <optgroup label="Business">
+                    <option>Product Manager</option>
+                    <option>Business Analyst</option>
+                    <option>Marketing Manager</option>
+                    <option>Sales Manager</option>
+                    <option>Operations Manager</option>
+                    <option>Finance Manager</option>
+                    <option>HR Manager</option>
+                  </optgroup>
+                  <optgroup label="Other">
+                    <option>Consultant</option>
+                    <option>Researcher</option>
+                    <option>Student / Intern</option>
+                    <option>Other</option>
+                  </optgroup>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label>Company / Startup <span style="color:var(--error)">*</span></label>
+              <div class="ishell">
+                <span class="picon">
+                  <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                </span>
+                <input type="text" id="company" placeholder="e.g. Acme Corp" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Startup idea -->
+          <div class="sec-label">Startup Idea</div>
+          <div class="field" style="margin-bottom:20px;">
+            <label>Describe your product or venture <span style="color:var(--error)">*</span></label>
+            <div class="ishell" style="align-items:flex-start;">
+              <span class="picon" style="top:11px;position:absolute;align-self:flex-start;">
+                <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              </span>
+              <textarea
+                id="startupIdea"
+                placeholder="What problem are you solving? Who is your target customer? What makes your approach different from existing solutions?"
+                oninput="NB.updateChar(this)"
+              ></textarea>
+            </div>
+            <div class="charrow">
+              <span class="hint">Be specific — we use this to tailor your AI tools and onboarding.</span>
+              <span class="ccnt" id="charCount">0 / 500</span>
+            </div>
+          </div>
+
+          <!-- Team size -->
+          <div class="sec-label">How many people are on your team?</div>
+          <div class="size-row">
+            <div class="scard sel" onclick="NB.pickSize(this,'1')">
+              <div class="snum">1</div><div class="ssub">Just me</div>
+            </div>
+            <div class="scard" onclick="NB.pickSize(this,'2-5')">
+              <div class="snum">2–5</div><div class="ssub">Small</div>
+            </div>
+            <div class="scard" onclick="NB.pickSize(this,'6-15')">
+              <div class="snum">6–15</div><div class="ssub">Growing</div>
+            </div>
+            <div class="scard" onclick="NB.pickSize(this,'16+')">
+              <div class="snum">16+</div><div class="ssub">Scale-up</div>
+            </div>
+          </div>
+
+          <!-- Team members (toggled by size selection) -->
+          <div class="team-wrap off" id="teamWrap">
+            <div class="sec-label">Team Members</div>
+            <div id="membersList"></div>
+            <button class="addbtn" onclick="NB.addMember()" type="button">
+              <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Add team member
+            </button>
+            <p class="hint" style="margin-bottom:0;">
+              LinkedIn and GitHub profiles help us pre-populate team member profiles in your workspace.
+            </p>
+          </div>
+        </div>
+
+        <div class="brow">
+          <button class="btng" onclick="NB.goStep(1)">← Back</button>
+          <button class="btnp" onclick="NB.goStep(3)">
+            Continue
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </div>
+      </div><!-- /step2 -->
+
+
+      <!-- ── STEP 3: Security ── -->
+      <div class="fstep" id="step3">
+        <div class="panel">
+          <div class="panel-header">
+            <div class="step-tag">Step 3 of 4</div>
+            <h2>Secure your account</h2>
+            <p>Set a strong password and select a multi-factor authentication method.</p>
+          </div>
+
+          <!-- Password fields -->
+          <div class="frow c1" style="margin-bottom:20px;">
+            <div class="field">
+              <label>Password <span style="color:var(--error)">*</span></label>
+              <div class="ishell">
+                <span class="picon">
+                  <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                </span>
+                <input type="password" id="pw" placeholder="Minimum 8 characters" oninput="NB.checkPw(this.value)" />
+                <button class="eyebtn" onclick="NB.togglePw('pw',this)" type="button">
+                  <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </button>
+              </div>
+              <!-- Strength meter -->
+              <div class="pwbox" id="pwMeter">
+                <div class="sbars">
+                  <div class="sbar" id="sb1"></div>
+                  <div class="sbar" id="sb2"></div>
+                  <div class="sbar" id="sb3"></div>
+                  <div class="sbar" id="sb4"></div>
+                </div>
+                <span class="pwlabel" id="pwLabel">Enter a password</span>
+              </div>
+            </div>
+            <div class="field">
+              <label>Confirm Password <span style="color:var(--error)">*</span></label>
+              <div class="ishell">
+                <span class="picon">
+                  <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                </span>
+                <input type="password" id="pw2" placeholder="Repeat password" />
+                <button class="eyebtn" onclick="NB.togglePw('pw2',this)" type="button">
+                  <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- MFA method selector -->
+          <div class="sec-label">Multi-Factor Authentication Method</div>
+          <p style="font-size:12px;color:var(--muted);margin-bottom:14px;">
+            Required on all enterprise accounts. Choose your preferred second-factor method.
+          </p>
+
+          <div class="mfa-row" id="mfaGrid">
+            <div class="mfacard sel" onclick="NB.pickMFA(this,'app')">
+              <div class="mfaiw" style="background:#4F46E5;">
+                <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+              </div>
+              <div>
+                <div class="mfaname">Authenticator App</div>
+                <div class="mfasub">Google or Microsoft Authenticator — recommended, most secure</div>
+              </div>
+            </div>
+            <div class="mfacard" onclick="NB.pickMFA(this,'sms')">
+              <div class="mfaiw" style="background:#0E7490;">
+                <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              </div>
+              <div>
+                <div class="mfaname">SMS / Text Message</div>
+                <div class="mfasub">One-time code sent to your registered mobile number</div>
+              </div>
+            </div>
+            <div class="mfacard" onclick="NB.pickMFA(this,'email')">
+              <div class="mfaiw" style="background:#B45309;">
+                <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <div class="mfaname">Email OTP</div>
+                <div class="mfasub">6-digit code sent to your verified work email address</div>
+              </div>
+            </div>
+            <div class="mfacard" onclick="NB.pickMFA(this,'skip')">
+              <div class="mfaiw" style="background:#94A3B8;">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+              </div>
+              <div>
+                <div class="mfaname">Skip for now</div>
+                <div class="mfasub">Not recommended — account will have reduced security</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Terms checkbox -->
+          <div class="crow">
+            <input type="checkbox" id="terms" />
+            <label for="terms">
+              I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+              I understand that my data may be processed to improve AI services in accordance
+              with applicable law and our Data Processing Agreement.
+            </label>
+          </div>
+        </div>
+
+        <div class="brow">
+          <button class="btng" onclick="NB.goStep(2)">← Back</button>
+          <button class="btnp" onclick="NB.goStep(4)">
+            Create Account
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </button>
+        </div>
+      </div><!-- /step3 -->
+
+
+      <!-- ── STEP 4: Email Verification ── -->
+      <div class="fstep" id="step4">
+        <div class="vbox">
+          <div class="vicn">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <h3>Verify your email address</h3>
+          <p>
+            We sent a 6-digit verification code to<br>
+            <strong id="emailDisplay" style="color:var(--text);font-weight:700;">your@email.com</strong>.<br>
+            Enter it below to activate your account.
+          </p>
+
+          <div class="otprow">
+            <input type="text" class="otpi" maxlength="1" id="o0" oninput="NB.otpMove(this,0)" onkeydown="NB.otpBack(event,0)" />
+            <input type="text" class="otpi" maxlength="1" id="o1" oninput="NB.otpMove(this,1)" onkeydown="NB.otpBack(event,1)" />
+            <input type="text" class="otpi" maxlength="1" id="o2" oninput="NB.otpMove(this,2)" onkeydown="NB.otpBack(event,2)" />
+            <input type="text" class="otpi" maxlength="1" id="o3" oninput="NB.otpMove(this,3)" onkeydown="NB.otpBack(event,3)" />
+            <input type="text" class="otpi" maxlength="1" id="o4" oninput="NB.otpMove(this,4)" onkeydown="NB.otpBack(event,4)" />
+            <input type="text" class="otpi" maxlength="1" id="o5" oninput="NB.otpMove(this,5)" onkeydown="NB.otpBack(event,5)" />
+          </div>
+
+          <button class="rsbtn" onclick="NB.showToast('New verification code sent. Please check your inbox.')">
+            Didn't receive a code? Resend
+          </button>
+        </div>
+
+        <button class="btnp" onclick="NB.doVerify()">
+          Verify &amp; Enter Dashboard
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </button>
+
+        <div class="secnote">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Your session is encrypted with TLS 1.3. Passwords are never stored in plaintext.
+        </div>
+
+        <div style="margin-top:12px;">
+          <button class="btng" style="width:100%;" onclick="NB.goStep(3)">← Change account details</button>
+        </div>
+      </div><!-- /step4 -->
+
+    </div><!-- /signupFlow -->
+
+
+    <!-- ════════════════════════
+         LOGIN FLOW
+         ════════════════════════ -->
+    <div id="loginFlow" style="display:none;">
+      <div class="panel">
+        <div class="panel-header">
+          <div class="step-tag">Secure Sign In</div>
+          <h2>Welcome back</h2>
+          <p>Sign in to your MyBusiness enterprise workspace.</p>
+        </div>
+
+        <div class="frow c1">
+          <div class="field">
+            <label>Work Email</label>
+            <div class="ishell">
+              <span class="picon">
+                <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </span>
+              <input type="email" placeholder="alex@company.com" />
+            </div>
+          </div>
+          <div class="field">
+            <label>Password</label>
+            <div class="ishell">
+              <span class="picon">
+                <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </span>
+              <input type="password" id="loginPw" placeholder="Your password" />
+              <button class="eyebtn" onclick="NB.togglePw('loginPw',this)" type="button">
+                <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;margin-top:4px;">
+          <div class="crow" style="margin-bottom:0;">
+            <input type="checkbox" id="remember" />
+            <label for="remember" style="font-size:13px;">Keep me signed in for 30 days</label>
+          </div>
+          <a href="#" style="font-size:13px;color:var(--blue);font-weight:500;text-decoration:none;white-space:nowrap;margin-left:12px;">
+            Forgot password?
+          </a>
+        </div>
+
+        <button class="btnp" onclick="NB.showToast('Sign-in successful — redirecting to your workspace.')">
+          Sign In
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+
+        <div class="divider">or sign in with SSO</div>
+
+        <div class="ssorow">
+          <button class="ssobtn" onclick="NB.showToast('Redirecting to Google Workspace SSO...')">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+            </svg>
+            Google Workspace
+          </button>
+          <button class="ssobtn" onclick="NB.showToast('Redirecting to Microsoft Entra ID...')">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M11.5 2H2v9.5h9.5V2z"   fill="#F25022"/>
+              <path d="M22 2h-9.5v9.5H22V2z"    fill="#7FBA00"/>
+              <path d="M11.5 12.5H2V22h9.5v-9.5z" fill="#00A4EF"/>
+              <path d="M22 12.5h-9.5V22H22v-9.5z" fill="#FFB900"/>
+            </svg>
+            Microsoft Entra
+          </button>
+        </div>
+      </div>
+
+      <div class="secnote">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        All sessions are TLS 1.3 encrypted. MFA is enforced on all enterprise accounts.
+      </div>
+
+      <div class="ftxt" style="margin-top:14px;">
+        New to MyBusiness? <a href="#" onclick="NB.switchMode('signup');return false;">Create an account</a>
+      </div>
+    </div><!-- /loginFlow -->
+
+
+  </div><!-- /form-wrapper -->
+</div><!-- /right-panel -->
+
+
+<!-- ── Toast notification ── -->
+<div class="toast" id="toast">
+  <div class="tdot"></div>
+  <span id="toastMsg">Action complete</span>
+</div>
+
+
+<!-- JavaScript — loaded at end of body for performance -->
+<script src="app.js"></script>
+
+</body>
+</html>
