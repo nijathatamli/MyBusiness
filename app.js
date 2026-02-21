@@ -367,6 +367,74 @@ var NB = (function () {
     }, 3500);
   }
 
+
+
+  /* ─────────────────────────────────────────
+     BACKEND API INTEGRATION
+     ───────────────────────────────────────── */
+
+  var apiBase = window.NB_API_BASE || 'http://localhost:5000';
+
+  function request(path, options) {
+    return fetch(apiBase + path, options).then(function (res) {
+      return res.json().catch(function () { return {}; }).then(function (payload) {
+        if (!res.ok) {
+          throw new Error(payload.error || 'Request failed');
+        }
+        return payload;
+      });
+    });
+  }
+
+  function registerUser(data) {
+    return request('/api/auth/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+  }
+
+  function verifyOtp(data) {
+    return request('/api/auth/verify-otp', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+  }
+
+  function loginUser(data) {
+    return request('/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+  }
+
+  function createStartup(token, data) {
+    return request('/api/startups', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      },
+      body: JSON.stringify(data)
+    });
+  }
+
+  function getStartups(token) {
+    return request('/api/startups', {
+      method: 'GET',
+      headers: { 'Authorization': 'Bearer ' + token }
+    });
+  }
+
+  function getDashboard(token) {
+    return request('/api/dashboard', {
+      method: 'GET',
+      headers: { 'Authorization': 'Bearer ' + token }
+    });
+  }
+
   /* ─────────────────────────────────────────
      PUBLIC API
      ───────────────────────────────────────── */
@@ -384,7 +452,13 @@ var NB = (function () {
     otpMove:      otpMove,
     otpBack:      otpBack,
     doVerify:     doVerify,
-    showToast:    showToast
+    showToast:    showToast,
+    registerUser: registerUser,
+    verifyOtp:    verifyOtp,
+    loginUser:    loginUser,
+    createStartup:createStartup,
+    getStartups:  getStartups,
+    getDashboard: getDashboard
   };
 
 })();
